@@ -1,9 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    background-color: #f4f4f9;
+    margin: 20px;
 }
-h1 {
-    color: #333;
+input[type="number"] {
+    width: 100px;
+    margin-right: 10px;
+    padding: 5px;
+}
+button {
+    margin: 5px;
+}
+.error {
+    background-color: rgb(243, 82, 82);
+    color: white;
 }

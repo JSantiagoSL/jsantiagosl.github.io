@@ -4,6 +4,7 @@ const URLS_TO_CACHE = [
     "./index.html",
     "./styles.css",
     "./app.js",
+    "./scripts",
     "./icons/icon-192x192.png",
     "./icons/icon-512x512.png"
 ];

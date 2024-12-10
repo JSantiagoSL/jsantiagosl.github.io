@@ -3,6 +3,7 @@ function calcular(operacao) {
     const num2 = document.getElementById('num2');
     const resultado = document.getElementById('resultado');
     const errorMessage = document.getElementById('error-message');
+    
 
     num1.classList.remove('error');
     num2.classList.remove('error');
@@ -19,8 +20,8 @@ function calcular(operacao) {
         return;
     }
 
-    const n1 = Number (num1.value);
-    const n2 = Number (num2.value);
+    const n1 = Number(num1.value);
+    const n2 = Number(num2.value);
     let res;
 
     switch (operacao) {
@@ -46,4 +47,28 @@ function calcular(operacao) {
     }
 
     resultado.textContent = res;
+
+    const itemHistorico = `${n1} ${operacao} ${n2} = ${res}`;
+    salvarHistorico(itemHistorico);
+    atualizarHistorico();
 }
+
+function salvarHistorico(item) {
+    let historico = JSON.parse(localStorage.getItem('historico')) || [];
+    historico.push(item);
+    localStorage.setItem('historico', JSON.stringify(historico));
+}
+
+function atualizarHistorico() {
+    const historico = document.getElementById('historico');
+    historico.innerHTML = '';
+
+    const resultados = JSON.parse(localStorage.getItem('historico')) || [];
+    resultados.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        historico.appendChild(li);
+    });
+}
+
+window.onload = atualizarHistorico;
